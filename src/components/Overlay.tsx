@@ -7,7 +7,7 @@ export interface OverlayProps {
 
 const Overlay: React.FC<OverlayProps> = ({callback}) => {
     return <div className={"overlay"}>
-        <Button onClick={callback}>Hide</Button>
+        <Button primary={true} onClick={callback}>Hide</Button>
         <h1>Hello</h1>
     </div>
 }

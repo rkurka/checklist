@@ -56,6 +56,10 @@
     font-weight: bold;
 }
 
+.borderApp {
+    padding: 3px;
+}
+
 .overlay {
     background-color: white;
     border-left: darkgray 1px solid;
