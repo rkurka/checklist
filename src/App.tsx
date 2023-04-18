@@ -1,26 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Tab} from "semantic-ui-react";
+import 'semantic-ui-css/semantic.min.css'
+import OneClick from "./pages/oneClick";
+import Checklist from "./pages/Checklist";
 
-function App() {
+
+const App = () => {
+
+  const panes = [
+    { menuItem: 'OneClick Configurator', render: () => <Tab.Pane><OneClick /></Tab.Pane> },
+    { menuItem: 'Checkpoints', render: () => <Tab.Pane>TBD Checkpoint Handling</Tab.Pane> },
+    { menuItem: 'Checklist', render: () => <Tab.Pane><Checklist /></Tab.Pane> },
+  ]
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Tab panes={panes} />
   );
-}
+};
 
 export default App;
