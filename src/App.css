@@ -55,3 +55,18 @@
     font-size: 18px;
     font-weight: bold;
 }
+
+.overlay {
+    background-color: white;
+    border-left: darkgray 1px solid;
+    position: absolute;
+    display: block;
+    width: 400px;
+    height: 100%;
+    top: 0;
+    left: calc(100% - 400px);
+    right: 0;
+    bottom: 0;
+    z-index: 200;
+    cursor: pointer;
+}

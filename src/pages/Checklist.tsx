@@ -1,8 +1,9 @@
 import React, {ReactNode, useContext} from "react";
 import {OCContext} from "../components/OneClickContext";
-import {Accordion} from "semantic-ui-react";
+import {Accordion, Button} from "semantic-ui-react";
 import {Task} from "../components/Task";
 import {Milestone} from "../components/Milestone";
+import Overlay from "../components/Overlay";
 
 const Checklist = () => {
     const ctxOneClick = useContext(OCContext);
@@ -12,9 +13,13 @@ const Checklist = () => {
     const hasOne = () => {
         return ctxOneClick.cashbook || ctxOneClick.smartConnect || ctxOneClick.upload || ctxOneClick.sevDesk
     }
+    const showHandler = () => {
+        setShow(!show)
+    }
 
     return (
-        <div onClick={()=>setShow(!show)}>
+        <div >
+            <Button onClick={showHandler}>Show</Button>
             <Accordion exclusive={false} fluid>
                 {ctxOneClick.sevDesk && <Milestone title={"Vorbereitung externe Programme"}>
                     <div className={"panel"}>
@@ -41,6 +46,7 @@ const Checklist = () => {
                     </div>
                 </Milestone>
             </Accordion>
+            {show && <Overlay callback={showHandler} />}
         </div>
     );
 };
