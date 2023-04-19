@@ -27,7 +27,7 @@ const Checklist = () => {
     }
 
     const showMilestone = (title: string) => {
-        if (formStatus.type === "none") {
+        if (formStatus.type !== "milestone") {
             setFormStatus(new FormStatus("milestone",title))
         } else {
             setFormStatus(new FormStatus("none",""))
@@ -35,7 +35,11 @@ const Checklist = () => {
     }
 
     const showTask = (title: string) => {
-        setFormStatus(new FormStatus("task",title))
+        if (formStatus.type !== "task") {
+            setFormStatus(new FormStatus("task", title))
+        } else {
+            setFormStatus(new FormStatus("none",""))
+        }
     }
 
     return (
