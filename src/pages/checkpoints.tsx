@@ -1,9 +1,6 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext} from "react";
 import {CheckpointContext, Status} from "../components/CheckpointContext";
 import {Checkbox, Table} from "semantic-ui-react";
-import {TaskProps} from "../components/Task";
-
-
 
 class EntryProps {
     status :Status
@@ -99,7 +96,7 @@ const Checkpoints = () => {
             <Entry status={ctx.accounting.reportingSent} />
             <Entry status={ctx.accounting.elsterDone} />
             <Entry status={ctx.accounting.invoiceSent} />
-            <Entry status={ctx.accounting.incoicePaid} />
+            <Entry status={ctx.accounting.invoicePaid} />
         </Table>
     </>
 }

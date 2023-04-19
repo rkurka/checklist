@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import { Button, Checkbox, Icon, Table } from 'semantic-ui-react'
+import { Button, Checkbox, Table } from 'semantic-ui-react'
 import {OCContext} from "../components/OneClickContext";
 
 const OneClick = () => {
@@ -7,15 +7,15 @@ const OneClick = () => {
 
     const [cashbook, setCashbook] = React.useState(ocCtx.cashbook)
     const [smartConnect, setSmartConnect] = React.useState(ocCtx.smartConnect)
-    const [sevdesk, setSevDesk] = React.useState(ocCtx.sevDesk)
+    const [sevDesk, setSevDesk] = React.useState(ocCtx.sevDesk)
     const [upload, setUpload] = React.useState(ocCtx.upload)
 
     const handleCashbook = () => setCashbook(!cashbook)
     const handleSmartConnect = () => setSmartConnect(!smartConnect)
-    const handleSevDesk = () => setSevDesk(!sevdesk)
+    const handleSevDesk = () => setSevDesk(!sevDesk)
     const handleUpload = () => setUpload(!upload)
     const handleSave = () => {
-        ocCtx.sevDesk = sevdesk;
+        ocCtx.sevDesk = sevDesk;
         ocCtx.cashbook = cashbook;
         ocCtx.upload = upload;
         ocCtx.smartConnect = smartConnect;
@@ -47,7 +47,7 @@ const OneClick = () => {
             </Table.Row>
             <Table.Row>
                 <Table.Cell collapsing>
-                    <Checkbox checked={sevdesk} onChange={handleSevDesk} slider />
+                    <Checkbox checked={sevDesk} onChange={handleSevDesk} slider />
                 </Table.Cell>
                 <Table.Cell>SevDesk</Table.Cell>
             </Table.Row>

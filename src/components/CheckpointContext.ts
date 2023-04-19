@@ -35,7 +35,7 @@ interface CheckpointContextDefinition {
         reportingSent : Status
         elsterDone : Status
         invoiceSent : Status
-        incoicePaid : Status
+        invoicePaid : Status
     }
 }
 
@@ -62,6 +62,6 @@ export const CheckpointContext = createContext({
         reportingSent: new Status(false, "Wurde die Auswertungen an den Mandanten gesendet?"),
         elsterDone: new Status(false, "Wurde die Steuererklärung über Elster abgeschickt?"),
         invoiceSent: new Status(false, "Wurden die Rechnungen an den Mandanten versendet?"),
-        incoicePaid: new Status(false, "Wurden die Rechnungen durch den Mandanten bezahlt?"),
+        invoicePaid: new Status(false, "Wurden die Rechnungen durch den Mandanten bezahlt?"),
     }
 } as CheckpointContextDefinition);
