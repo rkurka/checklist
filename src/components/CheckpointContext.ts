@@ -31,6 +31,12 @@ interface CheckpointContextDefinition {
         checkMonthSubmitted : Status
         check : Status
     }
+    accounting : {
+        reportingSent : Status
+        elsterDone : Status
+        invoiceSent : Status
+        incoicePaid : Status
+    }
 }
 
 export const CheckpointContext = createContext({
@@ -51,5 +57,11 @@ export const CheckpointContext = createContext({
     upload: {
         checkMonthSubmitted: new Status(false, "Wurden alle Belege für den Monat im Belegupload übertragen?"),
         check: new Status(false, "Wurden die über den Belegupload übertragenen Belege auf Korrektheit und Vollständigkeit geprüft?")
+    },
+    accounting: {
+        reportingSent: new Status(false, "Wurde die Auswertungen an den Mandanten gesendet?"),
+        elsterDone: new Status(false, "Wurde die Steuererklärung über Elster abgeschickt?"),
+        invoiceSent: new Status(false, "Wurden die Rechnungen an den Mandanten versendet?"),
+        incoicePaid: new Status(false, "Wurden die Rechnungen durch den Mandanten bezahlt?"),
     }
 } as CheckpointContextDefinition);

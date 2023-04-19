@@ -88,6 +88,19 @@ const Checkpoints = () => {
         </Table>
 
         <h1>Finanzbuchhaltung</h1>
+        <Table celled compact definition>
+            <Table.Header fullWidth>
+                <Table.Row>
+                    <Table.HeaderCell />
+                    <Table.HeaderCell>App</Table.HeaderCell>
+                    <Table.HeaderCell>Status</Table.HeaderCell>
+                </Table.Row>
+            </Table.Header>
+            <Entry status={ctx.accounting.reportingSent} />
+            <Entry status={ctx.accounting.elsterDone} />
+            <Entry status={ctx.accounting.invoiceSent} />
+            <Entry status={ctx.accounting.incoicePaid} />
+        </Table>
     </>
 }
 
