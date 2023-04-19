@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Checkbox, Icon, Label, Popup, Segment} from "semantic-ui-react";
+import {Button, Checkbox, Form, FormField, Icon, Input, Label, Popup, Segment, Tab} from "semantic-ui-react";
 import {Checkpoint} from "./CheckpointContext";
 
 export interface TaskProps {
@@ -8,8 +8,6 @@ export interface TaskProps {
     click:(title:string)=>void;
     checkpoint?: Checkpoint[]
 }
-
-
 
 const PopupExample: React.FC<TaskProps> = ({checkpoint}) => (
     <Popup content={<>
@@ -45,7 +43,7 @@ export const Task: React.FC<TaskProps> = ({title, click, mandant = false,checkpo
         return checkpoint !== null && checkpoint !== undefined && checkpoint.length > 0
     }
 
-    return <>
+     return <>
         <Segment className={"taskSegment"}>
             <div className={"containerTask"}>
                 <Checkbox className={"taskCheck"}></Checkbox>

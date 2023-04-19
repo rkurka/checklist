@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import {OCContext} from "../components/OneClickContext";
-import {Accordion, Button} from "semantic-ui-react";
+import {Accordion} from "semantic-ui-react";
 import {Task} from "../components/Task";
 import {Milestone} from "../components/Milestone";
 import Overlay from "../components/Overlay";
