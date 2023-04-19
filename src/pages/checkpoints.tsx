@@ -1,11 +1,11 @@
 import React, {useContext} from "react";
-import {CheckpointContext, Status} from "../components/CheckpointContext";
+import {CheckpointContext, Checkpoint} from "../components/CheckpointContext";
 import {Checkbox, Table} from "semantic-ui-react";
 
 class EntryProps {
-    status :Status
+    status :Checkpoint
 
-    constructor(status: Status) {
+    constructor(status: Checkpoint) {
         this.status = status
     }
 }

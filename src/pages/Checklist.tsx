@@ -4,6 +4,7 @@ import {Accordion, Button} from "semantic-ui-react";
 import {Task} from "../components/Task";
 import {Milestone} from "../components/Milestone";
 import Overlay from "../components/Overlay";
+import {CheckpointContext} from "../components/CheckpointContext";
 
 class FormStatus {
     type: "milestone" | "task" | "none";
@@ -17,6 +18,7 @@ class FormStatus {
 
 const Checklist = () => {
     const ctxOneClick = useContext(OCContext);
+    const ctxCheckPoints = useContext(CheckpointContext);
     const [formStatus, setFormStatus] = useState(new FormStatus("none",""));
 
     const hasOne = () => {
@@ -48,29 +50,35 @@ const Checklist = () => {
                 {ctxOneClick.sevDesk &&
                     <Milestone title={"Vorbereitung externe Programme"} click={showMilestone}>
                         <div className={"panel"}>
-                            {<Task click={showTask} doneCheckpoint={true} title={"Sevdesk Kontenabstimmung"}></Task>}
+                            {<Task click={showTask} checkpoint={[ctxCheckPoints.sevDesk.monthClosed]} title={"Sevdesk Kontenabstimmung"}></Task>}
                         </div>
                     </Milestone>
                 }
                 {hasOne()  &&
                     <Milestone title={"Vorbereitung"}  click={showMilestone}>
                         <div className={"panel"}>
-                            {ctxOneClick.cashbook &&<Task click={showTask} doneCheckpoint={true} mandant={true} title={"Kasse abschließen"}></Task>}
-                            {ctxOneClick.smartConnect && <Task click={showTask} doneCheckpoint={false} title={"SMART Connect Monatsabschluß"}></Task>}
-                            {ctxOneClick.upload && <Task click={showTask} mandant={true} doneCheckpoint={false} title={"Belege hochladen"}></Task>}
-                            <Task click={showTask} doneCheckpoint={false} title={"Belegeingang prüfen"}></Task>
+                            {ctxOneClick.cashbook &&<Task click={showTask} checkpoint={[]} mandant={true} title={"Kasse abschließen"}></Task>}
+                            {ctxOneClick.smartConnect && <Task click={showTask} title={"SMART Connect Monatsabschluß"}></Task>}
+                            {ctxOneClick.upload && <Task click={showTask} mandant={true} title={"Belege hochladen"}></Task>}
+                            <Task click={showTask}
+                                checkpoint={ [
+                                    ctxCheckPoints.cashbook.check,
+                                    ctxCheckPoints.upload.check,
+                                    ctxCheckPoints.smartConnect.check
+                                ]}
+                                title={"Belegeingang prüfen"}></Task>
                         </div>
                     </Milestone>
                 }
                 <Milestone title={"Durchführung"} click={showMilestone}>
                     <div className={"panel"}>
-                        {ctxOneClick.smartConnect && <Task click={showTask} doneCheckpoint={false} title={"SMART Connect übernehmen"}></Task>}
-                        <Task click={showTask} doneCheckpoint={false} title={"Elster übermitteln"}></Task>
+                        {ctxOneClick.smartConnect && <Task click={showTask}  title={"SMART Connect übernehmen"}></Task>}
+                        <Task click={showTask}  title={"Elster übermitteln"}></Task>
                     </div>
                 </Milestone>
                 <Milestone title={"Nachschau"}  click={showMilestone}>
                     <div className={"panel"}>
-                        <Task click={showTask} doneCheckpoint={false} title={"Rechnungen schreiben"}></Task>
+                        <Task click={showTask} title={"Rechnungen schreiben"}></Task>
                     </div>
                 </Milestone>
             </Accordion>

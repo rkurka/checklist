@@ -1,14 +1,30 @@
 import React from "react";
 import {Button, Checkbox, Icon, Label, Segment} from "semantic-ui-react";
+import {Checkpoint} from "./CheckpointContext";
 
 export interface TaskProps {
     title: string;
-    doneCheckpoint: boolean;
     mandant?: boolean;
     click:(title:string)=>void;
+    checkpoint?: Checkpoint[]
 }
 
-export const Task: React.FC<TaskProps> = ({title, doneCheckpoint, click, mandant = false}) => {
+export const Task: React.FC<TaskProps> = ({title, click, mandant = false,checkpoint}) => {
+    const getStatus = () => {
+        if(checkpoint !== null && checkpoint !== undefined) {
+            let cpdone = 0
+            checkpoint.forEach((check) => {
+                if (check.submitted) cpdone++
+            });
+            return ("" + ((cpdone / checkpoint.length)*100).toFixed(0) + " %")
+        }
+        return "offen"
+    }
+
+    const isValid = (checkpoint?: Checkpoint[]) => {
+        return checkpoint !== null && checkpoint !== undefined && checkpoint.length > 0
+    }
+
     return <>
         <Segment className={"taskSegment"}>
             <div className={"containerTask"}>
@@ -22,7 +38,7 @@ export const Task: React.FC<TaskProps> = ({title, doneCheckpoint, click, mandant
                     {!mandant && <Label className={"resp"} color={"blue"}>Berater</Label>}
                 </div>
                 <div className={"taskStatus"}>
-                    {doneCheckpoint && <Label>CP done</Label>}
+                    {isValid(checkpoint) && <Label>{getStatus()}</Label>}
                 </div>
             </div>
         </Segment>
