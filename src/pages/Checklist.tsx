@@ -48,29 +48,29 @@ const Checklist = () => {
                 {ctxOneClick.sevDesk &&
                     <Milestone title={"Vorbereitung externe Programme"} click={showMilestone}>
                         <div className={"panel"}>
-                            {<Task click={showTask} done={true} title={"Sevdesk Kontenabstimmung"}></Task>}
+                            {<Task click={showTask} doneCheckpoint={true} title={"Sevdesk Kontenabstimmung"}></Task>}
                         </div>
                     </Milestone>
                 }
                 {hasOne()  &&
                     <Milestone title={"Vorbereitung"}  click={showMilestone}>
                         <div className={"panel"}>
-                            {ctxOneClick.cashbook &&<Task  click={showTask} done={true} mandant={true} title={"Kasse abschließen"}></Task>}
-                            {ctxOneClick.smartConnect && <Task click={showTask} done={false} title={"SMART Connect Monatsabschluß"}></Task>}
-                            {ctxOneClick.upload && <Task click={showTask} mandant={true}  done={false}title={"Belege hochladen"}></Task>}
-                            <Task click={showTask} done={false}title={"Belegeingang prüfen"}></Task>
+                            {ctxOneClick.cashbook &&<Task click={showTask} doneCheckpoint={true} mandant={true} title={"Kasse abschließen"}></Task>}
+                            {ctxOneClick.smartConnect && <Task click={showTask} doneCheckpoint={false} title={"SMART Connect Monatsabschluß"}></Task>}
+                            {ctxOneClick.upload && <Task click={showTask} mandant={true} doneCheckpoint={false} title={"Belege hochladen"}></Task>}
+                            <Task click={showTask} doneCheckpoint={false} title={"Belegeingang prüfen"}></Task>
                         </div>
                     </Milestone>
                 }
                 <Milestone title={"Durchführung"} click={showMilestone}>
                     <div className={"panel"}>
-                        {ctxOneClick.smartConnect && <Task click={showTask} done={false} title={"SMART Connect übernehmen"}></Task>}
-                        <Task click={showTask} done={false} title={"Elster übermitteln"}></Task>
+                        {ctxOneClick.smartConnect && <Task click={showTask} doneCheckpoint={false} title={"SMART Connect übernehmen"}></Task>}
+                        <Task click={showTask} doneCheckpoint={false} title={"Elster übermitteln"}></Task>
                     </div>
                 </Milestone>
                 <Milestone title={"Nachschau"}  click={showMilestone}>
                     <div className={"panel"}>
-                        <Task click={showTask} done={false} title={"Rechnungen schreiben"}></Task>
+                        <Task click={showTask} doneCheckpoint={false} title={"Rechnungen schreiben"}></Task>
                     </div>
                 </Milestone>
             </Accordion>

@@ -3,12 +3,12 @@ import {Button, Checkbox, Icon, Label, Segment} from "semantic-ui-react";
 
 export interface TaskProps {
     title: string;
-    done: boolean;
+    doneCheckpoint: boolean;
     mandant?: boolean;
     click:(title:string)=>void;
 }
 
-export const Task: React.FC<TaskProps> = ({title, done, click, mandant = false}) => {
+export const Task: React.FC<TaskProps> = ({title, doneCheckpoint, click, mandant = false}) => {
     return <>
         <Segment className={"taskSegment"}>
             <div className={"containerTask"}>
@@ -22,7 +22,7 @@ export const Task: React.FC<TaskProps> = ({title, done, click, mandant = false})
                     {!mandant && <Label className={"resp"} color={"blue"}>Berater</Label>}
                 </div>
                 <div className={"taskStatus"}>
-                    {done && <Label>Erledigt</Label>}
+                    {doneCheckpoint && <Label>CP done</Label>}
                 </div>
             </div>
         </Segment>
