@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {OCContext} from "../components/OneClickContext";
 import {Accordion, Button} from "semantic-ui-react";
 import {Task} from "../components/Task";
@@ -17,8 +17,7 @@ class FormStatus {
 
 const Checklist = () => {
     const ctxOneClick = useContext(OCContext);
-    const [formStatus, setFormStatus] = React.useState<FormStatus>(new FormStatus("none",""));
-
+    const [formStatus, setFormStatus] = useState(new FormStatus("none",""));
 
     const hasOne = () => {
         return ctxOneClick.cashbook || ctxOneClick.smartConnect || ctxOneClick.upload || ctxOneClick.sevDesk
@@ -38,7 +37,6 @@ const Checklist = () => {
     const showTask = (title: string) => {
         setFormStatus(new FormStatus("task",title))
     }
-
 
     return (
         <div >

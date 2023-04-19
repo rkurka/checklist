@@ -18,7 +18,7 @@ export const Milestone: React.FC<AuxProps> = ({
             <b  className={"milestoneTitle"} >{title}</b>
             <Button basic color='grey' size={'tiny'} icon onClick={() => click(title)}><Icon size={'small'} name={"edit"} /></Button>
         </Accordion.Title>
-        <Accordion.Content active={phase} onClick={() => click(title)}>
+        <Accordion.Content active={phase}>
             {children}
         </Accordion.Content>
     </>
