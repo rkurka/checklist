@@ -57,9 +57,9 @@ const Checklist = () => {
                 {hasOne()  &&
                     <Milestone title={"Vorbereitung"}  click={showMilestone}>
                         <div className={"panel"}>
-                            {ctxOneClick.cashbook &&<Task click={showTask} checkpoint={[]} mandant={true} title={"Kasse abschließen"}></Task>}
-                            {ctxOneClick.smartConnect && <Task click={showTask} title={"SMART Connect Monatsabschluß"}></Task>}
-                            {ctxOneClick.upload && <Task click={showTask} mandant={true} title={"Belege hochladen"}></Task>}
+                            {ctxOneClick.cashbook &&<Task click={showTask} checkpoint={[ctxCheckPoints.cashbook.export]} mandant={true} title={"Kasse abschließen"}></Task>}
+                            {ctxOneClick.smartConnect && <Task click={showTask} checkpoint={[ctxCheckPoints.smartConnect.checkCurrentStatus]} title={"SMART Connect Monatsabschluß"}></Task>}
+                            {ctxOneClick.upload && <Task click={showTask} checkpoint={[ctxCheckPoints.upload.checkMonthSubmitted]} mandant={true} title={"Belege hochladen"}></Task>}
                             <Task click={showTask}
                                 checkpoint={ [
                                     ctxCheckPoints.cashbook.check,

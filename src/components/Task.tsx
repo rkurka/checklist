@@ -36,7 +36,7 @@ export const Task: React.FC<TaskProps> = ({title, click, mandant = false,checkpo
             // ob Prozent das richtige ist der 1/3 oder so sei mal dahingestellt
             // verlinkung zum Checkpoint: was ist die Source, wann hat wer was ...
             // auch im Seitenbereich
-            return ("" + ((cpdone / checkpoint.length)*100).toFixed(0) + " %")
+            return (cpdone+"/"+checkpoint.length)
         }
         return "offen"
     }
