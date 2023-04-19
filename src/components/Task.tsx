@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Checkbox, Icon, Label, Segment} from "semantic-ui-react";
+import {Button, Checkbox, Icon, Label, Popup, Segment} from "semantic-ui-react";
 import {Checkpoint} from "./CheckpointContext";
 
 export interface TaskProps {
@@ -8,6 +8,23 @@ export interface TaskProps {
     click:(title:string)=>void;
     checkpoint?: Checkpoint[]
 }
+
+
+
+const PopupExample: React.FC<TaskProps> = ({checkpoint}) => (
+    <Popup content={<>
+        <h3>Checkpoints</h3>
+        {
+            checkpoint?.map(
+                check => <Checkbox checked={check.submitted} label={check.description} />
+            )
+        }
+
+    </>} trigger={<Icon name='info' />} />
+)
+
+export default PopupExample
+
 
 export const Task: React.FC<TaskProps> = ({title, click, mandant = false,checkpoint}) => {
     const getStatus = () => {
@@ -41,7 +58,7 @@ export const Task: React.FC<TaskProps> = ({title, click, mandant = false,checkpo
                     {!mandant && <Label className={"resp"} color={"blue"}>Berater</Label>}
                 </div>
                 <div className={"taskStatus"}>
-                    {isValid(checkpoint) && <Label>{getStatus()}</Label>}
+                    {isValid(checkpoint) && <><Label>{getStatus()}</Label><PopupExample checkpoint={checkpoint} title={title} click={click}/></>}
                 </div>
             </div>
         </Segment>
