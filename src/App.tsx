@@ -14,14 +14,13 @@ const App = () => {
   ]
   return (
       <>
-        <Header as='h2' attached='top'>
+        <Header as='h2' attached='top' size={"medium"}>
           Checklist
         </Header>
         <Segment attached>
           <div className={"borderApp"}>
             <Tab panes={panes} />
           </div>
-
         </Segment>
       </>
 

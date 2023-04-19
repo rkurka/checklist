@@ -23,8 +23,12 @@
 }
 
 .taskTitle {
-    font-size: 18px;
     min-width: 400px;
+}
+
+.taskLabel {
+    font-size: 18px;
+    margin-right: 10px;
 }
 
 .resp {
@@ -54,6 +58,7 @@
 .milestoneTitle {
     font-size: 18px;
     font-weight: bold;
+    margin-right: 10px;
 }
 
 .borderApp {
@@ -61,6 +66,7 @@
 }
 
 .overlay {
+    padding-top: 2px;
     background-color: white;
     border-left: darkgray 1px solid;
     position: absolute;
