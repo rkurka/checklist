@@ -4,15 +4,17 @@ import {Accordion} from "semantic-ui-react";
 import {Task} from "../components/Task";
 import {Milestone} from "../components/Milestone";
 import Overlay from "../components/Overlay";
-import {CheckpointContext} from "../components/CheckpointContext";
+import {Checkpoint, CheckpointContext} from "../components/CheckpointContext";
 
 class FormStatus {
     type: "milestone" | "task" | "none";
     title: string;
+    checkpoints: Checkpoint[];
 
-    constructor(type: "milestone" | "task" | "none",title:string) {
+    constructor(type: "milestone" | "task" | "none",title:string, checkpoints: Checkpoint[] = []) {
         this.type = type;
         this.title = title;
+        this.checkpoints = checkpoints;
     }
 }
 
@@ -36,9 +38,9 @@ const Checklist = () => {
         }
     }
 
-    const showTask = (title: string) => {
+    const showTask = (title: string,checkpoints: Checkpoint[]) => {
         if (formStatus.type !== "task") {
-            setFormStatus(new FormStatus("task", title))
+            setFormStatus(new FormStatus("task", title, checkpoints))
         } else {
             setFormStatus(new FormStatus("none",""))
         }
@@ -82,7 +84,11 @@ const Checklist = () => {
                     </div>
                 </Milestone>
             </Accordion>
-            {formStatus.type !== "none" && <Overlay title={formStatus.title} type={formStatus.type} callback={showHandler} />}
+            {formStatus.type !== "none" && <Overlay
+                title={formStatus.title}
+                type={formStatus.type}
+                checkpoints={formStatus.checkpoints}
+                callback={showHandler} />}
         </div>
     );
 };

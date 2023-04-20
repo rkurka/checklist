@@ -1,11 +1,12 @@
 import React from "react";
 import {Button, Checkbox, Form, FormField, Icon, Input, Label, Popup, Segment, Tab} from "semantic-ui-react";
 import {Checkpoint} from "./CheckpointContext";
+import checkpoints from "../pages/checkpoints";
 
 export interface TaskProps {
     title: string;
     mandant?: boolean;
-    click:(title:string)=>void;
+    click:(title:string,checkpoints:Checkpoint[])=>void;
     checkpoint?: Checkpoint[]
 }
 
@@ -43,13 +44,20 @@ export const Task: React.FC<TaskProps> = ({title, click, mandant = false,checkpo
         return checkpoint !== null && checkpoint !== undefined && checkpoint.length > 0
     }
 
+    const getCheckpoints = () : Checkpoint[] => {
+        if (checkpoint !== null && checkpoint !== undefined) {
+            return checkpoint
+        }
+        return []
+    }
+
      return <>
         <Segment className={"taskSegment"}>
             <div className={"containerTask"}>
                 <Checkbox className={"taskCheck"}></Checkbox>
                 <div className={"taskTitle"}>
                     <span className={"taskLabel"}>{title}</span>
-                    <Button basic color='grey' size={'tiny'} icon onClick={() => click(title)}><Icon size={'small'} name={"edit"} /></Button>
+                    <Button basic color='grey' size={'tiny'} icon onClick={() => click(title, getCheckpoints())}><Icon size={'small'} name={"edit"} /></Button>
                 </div>
                 <div className={"taskResponsible"}>
                     {mandant && <Label className={"resp"} color={"green"}>Mandant</Label>}

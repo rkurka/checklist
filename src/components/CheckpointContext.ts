@@ -3,16 +3,16 @@ import {createContext} from "react";
 export class Checkpoint {
     public submitted: boolean;
     public description: string;
-    public logMessage: string;
+    public logMessage: string[];
 
     constructor(submitted: boolean, description: string) {
         this.submitted = submitted;
         this.description = description;
-        this.logMessage = "";
+        this.logMessage = [];
     }
 }
 
-interface CheckpointContextDefinition {
+export interface CheckpointContextDefinition {
     cashbook : {
         export : Checkpoint
         import : Checkpoint

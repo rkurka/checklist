@@ -1,12 +1,14 @@
 import React from "react";
 import {Checkbox, Feed, Form, FormField, Input, Label, Radio, Segment, Tab, TextArea} from "semantic-ui-react";
+import {Checkpoint} from "./CheckpointContext";
 
 export interface TaskFormProps {
     title: string;
+    checkpoints:Checkpoint[]
 }
 
 
-const TaskForm: React.FC<TaskFormProps> = ({title}) => {
+const TaskForm: React.FC<TaskFormProps> = ({title,checkpoints}) => {
 
     const panes = [
         { menuItem: 'Status', render: () => <Tab.Pane>
@@ -58,18 +60,18 @@ const TaskForm: React.FC<TaskFormProps> = ({title}) => {
             </Tab.Pane> },
         { menuItem: 'History', render: () => <Tab.Pane>
                 <Feed>
-                    <Feed.Event
-                        icon='pencil'
-                        date='Today'
-                        summary="Geändert von Mandant"
-                    />
-                    <Feed.Event>
-                        <Feed.Label icon='pencil' />
-                        <Feed.Content
-                            date='Today'
-                            summary="Erledigt von Berater."
-                        />
-                    </Feed.Event>
+                    {checkpoints.map((check) => <>
+                        {
+                            check.logMessage.map((msg) => <Feed.Event>
+                                    <Feed.Label icon='pencil' />
+                                    <Feed.Content
+                                        date={msg}
+                                        summary={"an: " + check.description}
+                                    />
+                                </Feed.Event>)
+                        }
+                        </>)
+                    }
                 </Feed>
             </Tab.Pane> },
     ]
